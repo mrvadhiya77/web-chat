@@ -13,7 +13,7 @@ import { Router, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-login', // Defines the custom HTML tag for this component
   standalone:true,
-  imports: [RouterOutlet], // Placeholder for any additional modules to be imported
+  imports: [], // Placeholder for any additional modules to be imported
   templateUrl: './login.component.html', // Path to the HTML template for this component
   styleUrl: './login.component.css' // Path to the CSS styles for this component
 })
@@ -33,7 +33,7 @@ export class LoginComponent {
     await this.authService.loginWithGoogle().then(()=> {
 
       // this.router.navigateByUrl('/chatlist', { replaceUrl: true }); // ✅ Navigate after login
-      this.router.navigate(['/chatlist']); // ✅ Navigate after login
-    })
+      this.router.navigate(['/chatboard']); // ✅ Navigate after login
+    }).catch(console.error)
   }
 }

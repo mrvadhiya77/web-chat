@@ -5,11 +5,13 @@ import { addDoc, collection } from 'firebase/firestore';
 import { LoginComponent } from "./login/login.component";
 import { NgIf } from '@angular/common';
 import { AuthService } from './auth/auth.service';
+import { UserListComponent } from './user-list/user-list.component';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 
 @Component({
   selector: 'app-root',
   standalone:true,
-  imports: [RouterOutlet, NgIf],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

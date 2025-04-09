@@ -1,0 +1,35 @@
+.bg-gray {
+    background-color: #e9ecef;
+    /* Light gray for received messages */
+}
+
+.bg-white {
+    background-color: #ffffff;
+    /* White for sent messages */
+}
+
+.flex-grow-1 {
+    overflow-y: auto;
+    /* Scrollable messages */
+}
+
+.rounded {
+    border-radius: 10px !important;
+    /* Slightly rounded corners */
+}
+
+.form-control {
+    border-color: #ced4da;
+    /* Light gray border */
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    /* Gray button */
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    /* Darker gray on hover */
+}

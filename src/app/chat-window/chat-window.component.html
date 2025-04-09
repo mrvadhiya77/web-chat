@@ -1,0 +1,32 @@
+<div class="h-100 d-flex flex-column">
+    <!-- Chat Header -->
+    <div class="p-3 bg-secondary text-white">
+      <h4 class="mb-0">Chat</h4>
+    </div>
+    <!-- Messages Area -->
+    <div class="flex-grow-1 overflow-auto p-3 bg-light">
+      <div *ngFor="let msg of messages" 
+           class="mb-3"
+           [ngClass]="{'text-end': msg.senderId === currentUserId, 'text-start': msg.senderId !== currentUserId}">
+        <div class="d-inline-block p-2 rounded"
+             [ngClass]="{'bg-white text-dark': msg.senderId === currentUserId, 'bg-gray text-dark': msg.senderId !== currentUserId}">
+          <p class="mb-1">{{ msg.message }}</p>
+          <small class="text-muted">{{ msg.timestamp }}</small>
+        </div>
+      </div>
+    </div>
+    <!-- Input Area -->
+    <div class="p-3 bg-light border-top">
+      <div class="input-group">
+        <input type="text" 
+               class="form-control" 
+               [(ngModel)]="newMessage" 
+               (keyup.enter)="sendMessage()" 
+               placeholder="Type a message..." 
+               aria-label="Message input">
+        <button class="btn btn-secondary" 
+                type="button" 
+                (click)="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>

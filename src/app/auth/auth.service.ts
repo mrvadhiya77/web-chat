@@ -9,7 +9,7 @@ import { Auth, User } from '@angular/fire/auth';
 import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root' // Ensures the service is a singleton and available throughout the app
@@ -75,5 +75,15 @@ export class AuthService {
   logout() {
     this.isAuthenticatedSubject.next(false);
     return signOut(this.auth).then(() => this.router.navigate(['/login']));
+  }
+
+  getCurrentUser(): Observable<User | null> {
+    return new Observable(observer => {
+      onAuthStateChanged(this.auth, user => {
+        observer.next(user);
+      }, err => {
+        observer.error(err);
+      });
+    });
   }
 }

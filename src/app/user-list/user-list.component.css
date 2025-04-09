@@ -1,0 +1,17 @@
+.list-group-item {
+    cursor: pointer;
+    background-color: #ffffff;
+    /* White background */
+    border-color: #dee2e6;
+    /* Light gray border */
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    /* Slightly darker white on hover */
+}
+
+.overflow-auto {
+    max-height: 100%;
+    /* Ensures scrolling within the sidebar */
+}
