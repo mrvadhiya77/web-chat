@@ -5,6 +5,7 @@ import { ChatService } from '../chat/chat.service';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Timestamp } from 'firebase/firestore';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-chat-window',
@@ -20,18 +21,23 @@ export class ChatWindowComponent {
 
   constructor(
     private authService: AuthService,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private sharedService : SharedService
   ) {}
 
   ngOnInit() {
     this.authService.getCurrentUser().subscribe(user => {
       if (user) {
         this.currentUserId = user.uid;
-        if (this.receiverId) {
-          this.loadMessages();
-        }
+        this.sharedService.receiverId$.subscribe(receiverId => {
+          this.receiverId = receiverId;
+          if (this.receiverId) {
+            this.loadMessages();
+          }
+        });
       }
     });
+
   }
 
   loadMessages() {

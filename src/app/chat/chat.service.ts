@@ -15,7 +15,7 @@ export class ChatService {
 
   // Get all users except the current user
   getUsers(currentUserId: string): Observable<User[]> {
-    const usersRef = collection(this.firestore, 'users');
+    const usersRef = collection(this.firestore, 'user');
     const q = query(usersRef, where('uid', '!=', currentUserId));
     return new Observable(observer => {
       onSnapshot(q, snapshot => {

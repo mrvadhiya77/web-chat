@@ -11,7 +11,7 @@
         <div class="d-inline-block p-2 rounded"
              [ngClass]="{'bg-white text-dark': msg.senderId === currentUserId, 'bg-gray text-dark': msg.senderId !== currentUserId}">
           <p class="mb-1">{{ msg.message }}</p>
-          <small class="text-muted">{{ msg.timestamp }}</small>
+          <!-- <small class="text-muted">{{ msg.timestamp }}</small> -->
         </div>
       </div>
     </div>

@@ -57,7 +57,7 @@ export class AuthService {
       if (!userDoc.exists()) {
         await setDoc(userDocRef, {
           uid: user.uid,
-          name: user.displayName,
+          displayName: user.displayName,
           email: user.email,
           photoURL: user.photoURL,
           createdAt: new Date()
