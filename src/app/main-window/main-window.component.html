@@ -1,12 +1,16 @@
 <div class="container-fluid h-100 bg-light">
-    <div class="row h-100">
-      <!-- User List (Sidebar) -->
-      <div class="col-md-4 col-lg-3 p-0 bg-gray">
-        <app-user-list></app-user-list>
-      </div>
-      <!-- Chat Area -->
-      <div class="col-md-8 col-lg-9 p-0">
-        <app-chat-window></app-chat-window>
-      </div>
+  <div class="row h-100">
+    <!-- Hamburger Menu for Mobile -->
+    <button class="hamburger-menu d-md-none" (click)="toggleSidebar()">
+      &#9776; <!-- Unicode for the hamburger icon -->
+    </button>
+    <!-- User List (Sidebar) -->
+    <div *ngIf="isSidebarVisible" id="sidebar" class="col-md-4 col-lg-3 p-0 bg-gray border border-secondary">
+      <app-user-list></app-user-list>
+    </div>
+    <!-- Chat Area -->
+    <div id="chat-area" class="col-md-8 col-lg-9 p-0">
+      <app-chat-window></app-chat-window>
     </div>
   </div>
+</div>

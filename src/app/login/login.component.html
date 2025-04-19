@@ -1,11 +1,22 @@
-<div class="container">
-  <div class="login-card shadow-sm p-4 rounded-4">
-    <h3 class="text-center mb-3 fw-bold">Sign In</h3>
-    <p class="text-center text-muted mb-4">Log in with your Google account</p>
-    <div class="d-flex align-items-center justify-content-center gap-2">
-      <button class="btn btn-google w-75" (click)="login()">
-        <i class="bi bi-google"></i> Sign In with Google
-      </button>
+<h2 class="text-center mb-4">Login</h2>
+<form (submit)="login()" class="form-container" [formGroup]="loginForm">
+  <div class="form-group">
+    <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email" required />
+    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
+      <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</div>
+      <div *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email address.</div>
     </div>
   </div>
+  <div class="form-group">
+    <input type="password" formControlName="password" name="password" class="form-control" placeholder="Password" required />
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
+      <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
+  <button (click)="navigateToRegister()" class="btn btn-secondary">Register</button>
+</form>
+
+<!-- Register Button -->
+<div class="text-center mt-3">
 </div>

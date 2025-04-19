@@ -6,6 +6,7 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Timestamp } from 'firebase/firestore';
 import { SharedService } from '../shared/shared.service';
+import { AuthWithEmailService } from '../auth_with_email/auth-with-email.service';
 
 @Component({
   selector: 'app-chat-window',
@@ -20,7 +21,7 @@ export class ChatWindowComponent {
   newMessage: string = '';
 
   constructor(
-    private authService: AuthService,
+    private authService: AuthWithEmailService,
     private chatService: ChatService,
     private sharedService : SharedService
   ) {}
@@ -51,5 +52,9 @@ export class ChatWindowComponent {
       this.chatService.sendMessage(this.currentUserId, this.receiverId, this.newMessage);
       this.newMessage = '';
     }
+  }
+
+  logout(){
+    this.authService.logout();
   }
 }
